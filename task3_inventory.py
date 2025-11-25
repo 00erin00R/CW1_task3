@@ -19,8 +19,10 @@ def generate_report(data):
     return total_items, highest_price, out_stock
 
 def restock_item(data, product_id):
-    id_input=input("Enter the product ID: ")
+    product_id = int(input("Enter the product ID to restock: "))
+    find_id = (next((item for item in data if item["id"] == product_id), None))
 
+    return find_id
 
 inventory = load_inventory('inventory.json')
 total_items, highest_price, out_stock = generate_report(inventory)
@@ -34,3 +36,5 @@ if out_stock:
         print("-", item.get("name"))
 else:
     print("None")
+
+restock_item(inventory, 'inventory.json')
