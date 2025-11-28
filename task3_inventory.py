@@ -18,7 +18,25 @@ def generate_report(data):
 
     return total_items, highest_price, out_stock
 
+def restock_item(data, product_id, amount):
+    for item in data:
+        if item.get("id")==product_id:
+            item["stock"] += amount
+            print(f"Restocked {item['name']}. New stock: {item['stock']}")
+            return
+    
+    print(f"Error: Product with ID {product_id}not found.")
+
+def save_inventory(filename, data):
+    with open("updated_inventory.json","w") as f:
+        json.dump(data, f, indent=1)
+
 inventory = load_inventory('inventory.json')
+
+if not inventory:
+    print("Inventory is empty or failed to load.")
+    exit()
+
 total_items, highest_price, out_stock = generate_report(inventory)
 
 print("Your total stock is: ", total_items)
@@ -30,3 +48,13 @@ if out_stock:
         print("-", item.get("name"))
 else:
     print("None")
+
+try:
+    user_id = int(input("Enter the product ID to be restocked: "))
+    amount = int(input("Enter amount to restock: "))
+except ValueError:
+    print("Invalid ID. Must be a number.")
+    exit()
+
+restock_item(inventory, user_id, amount)
+save_inventory("invntory.json",inventory)

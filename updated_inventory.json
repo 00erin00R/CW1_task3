@@ -1,0 +1,26 @@
+[
+ {
+  "id": 101,
+  "name": "Wireless Mouse",
+  "price": 25.5,
+  "stock": 15
+ },
+ {
+  "id": 102,
+  "name": "Mechanical Keyboard",
+  "price": 120.0,
+  "stock": 8
+ },
+ {
+  "id": 103,
+  "name": "USB-C Hub",
+  "price": 45.99,
+  "stock": 5
+ },
+ {
+  "id": 104,
+  "name": "Monitor Stand",
+  "price": 29.99,
+  "stock": 12
+ }
+]
